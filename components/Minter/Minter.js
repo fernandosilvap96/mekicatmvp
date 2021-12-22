@@ -48,8 +48,8 @@ const Minter = () => {
               method: 'wallet_addEthereumChain',
               params: [
                 {
-                  chainId: '0x61',
-                  rpcUrl: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
+                  chainId: '0x4',
+                  rpcUrl: 'https://rinkey.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
                 },
               ],
             });
