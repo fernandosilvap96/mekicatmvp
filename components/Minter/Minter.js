@@ -49,7 +49,7 @@ const Minter = () => {
               params: [
                 {
                   chainId: '0x4',
-                  rpcUrl: 'https://rinkey.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
+                  rpcUrl: 'https://eth-rinkeby.alchemyapi.io/v2/AjvQfwEEeSPY_QF5LRMRbQzn99qeogCn',
                 },
               ],
             });
