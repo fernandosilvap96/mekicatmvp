@@ -67,6 +67,8 @@ const Minter = () => {
 
   const mint = async () => {
     setMinted(false);
+    console.log(provider);
+    console.log(nft);
 
     //TX Mint
     try {
