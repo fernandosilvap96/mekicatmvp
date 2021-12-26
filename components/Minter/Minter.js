@@ -29,7 +29,7 @@ const Minter = () => {
         const signer = provider.getSigner();
         const account = await signer.getAddress();
         const nft = new Contract(
-          '0xfdf186a5f2fe970157c4fa9cec5184345accb3d5',
+          '0xA83773088125f02810076b5417d9De6919A9174A',
           abi,
           signer
         );
@@ -76,9 +76,29 @@ const Minter = () => {
       // const user = ethereum.selectedAddress();
       console.log(nft)
       console.log(provider)
-      const tx1 = await nft.mint(address, quantidade)
-      await tx1.wait();
+      const signer = provider.getSigner();
+      console.log(signer)
 
+    
+      const tx1 = await nft.mintByUsers(quantidade)
+      tx1.wait();
+      console.log(tx1)
+    
+
+
+
+      /*
+      console.log('passou')
+      const tx3 = await signer.sendTransaction({
+        data: nft.mintByUsers(quantidade).encodeABI(),
+        value: '0.1',
+      })
+      tx3.wait();
+      console.log(tx3)
+      */
+      
+
+    
       console.log("Minting DONE");
       setMinted(true);
     } catch (error) {
@@ -126,7 +146,7 @@ const Minter = () => {
               </form>
               <hr />
               {minted ? (
-                <a href="https://testnets.opensea.io/collection/mekicats-test-v3">LINK TO OPENSEA</a>
+                <a href="https://testnets.opensea.io/collection/mekicats-test-vjlfmsxqh2">LINK TO OPENSEA</a>
               ) : (
                 <div>Awaiting to mint...</div>
               )}
