@@ -11,9 +11,23 @@ const Minter = () => {
   const [provider, setProvider] = useState(undefined);
   const [nft, setNft] = useState(undefined);
   const [isConnected, setConnected] = useState(false);
-  const [quantidade, setQuantidade] = useState("1");
+  const [quantidade, setQuantidade] = useState(1);
   const [address, setAddress] = useState(undefined);
   const [minted, setMinted] = useState(false);
+
+  /*
+  inputChangedHandler = (event) => {
+    const updatedKeyword = event.target.value;
+    // May be call for search result
+  }
+  */
+
+  const inc = async (event) => {
+    setQuantidade(quantidade + 1);
+  };
+  const dec = async () => {
+    setQuantidade(quantidade - 1);
+  };
 
   const init = async () => {
     console.log('entrou');
@@ -83,10 +97,6 @@ const Minter = () => {
       const tx1 = await nft.mintByUsers(quantidade)
       tx1.wait();
       console.log(tx1)
-    
-
-
-
       /*
       console.log('passou')
       const tx3 = await signer.sendTransaction({
@@ -104,7 +114,10 @@ const Minter = () => {
     } catch (error) {
       console.log('That minting did not go well.')
     }
-  }
+
+
+   }
+
 
   return (
 
@@ -126,24 +139,23 @@ const Minter = () => {
             <div className="Minter">
               <h1 id="title">Minter</h1>
               <p>
-                Enter quantity you want to mint
+                Enter quantity you want to mint:
               </p>
+ 
+                <div className={styles._number_input}>
+                  <button onClick={() => dec()}>-</button>
+                  <input  value={quantidade} type="number" id="total"
+                  onChange={(event)=>setQuantidade(event.target.value)}
+                  />
+                  <button onClick={() => inc()}>+</button>
+                </div>
 
-              <form>
-                <h2>Quantity</h2>
-                <input
-                  type="number"
-                  max="10"
-                  min="1"
-                  onChange={(event) => setQuantidade(event.target.value)}
-                />
                 <button
                   type='button'
                   onClick={() => mint()}
                 >
                   Mint
                 </button>
-              </form>
               <hr />
               {minted ? (
                 <a href="https://testnets.opensea.io/collection/mekicats-test-vjlfmsxqh2">LINK TO OPENSEA</a>
